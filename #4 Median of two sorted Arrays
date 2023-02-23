@@ -1,21 +1,27 @@
 class Solution {
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        // declare vars for medians 
        double med1, med2;
+       // declare vector for merged arrays
        vector<double> newvec;
        double sum, median = 0;
 
+        // push all values of 1st vect into merge array
        for (int i = 0; i < nums1.size(); i++){
            newvec.push_back(nums1[i]);
        }
+       // push all values of 2nd vect into merge array
        for (int j = 0; j < nums2.size(); j++){
            newvec.push_back(nums2[j]);
        }
+       // sort merge array
        sort(newvec.begin(), newvec.end());
 
        for (int k = 0; k < newvec.size(); k++){
            sum += newvec[k];
        }
+       // if the array is even sized, the median will be the element 
        if (newvec.size() % 2)
             return newvec[newvec.size() / 2];
        else 
